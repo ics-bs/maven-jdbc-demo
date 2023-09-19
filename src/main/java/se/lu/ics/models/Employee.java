@@ -31,6 +31,10 @@ public class Employee {
         return salary;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
@@ -41,5 +45,9 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
