@@ -4,11 +4,19 @@ public class Employee {
     private String employeeId;
     private String name;
     private int salary;
+    private Department department;
 
     public Employee(String employeeId, String name, int salary) {
         this.employeeId = employeeId;
         this.name = name;
         this.salary = salary;
+    }
+
+    public Employee(String employeeId, String name, int salary, Department department) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.salary = salary;
+        this.department = department;
     }
 
     public String getEmployeeId() {
