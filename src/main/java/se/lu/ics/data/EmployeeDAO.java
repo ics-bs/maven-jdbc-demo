@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import se.lu.ics.models.Department;
 import se.lu.ics.models.Employee;
 
 public class EmployeeDAO {
@@ -18,7 +19,12 @@ public class EmployeeDAO {
     }
 
     public static void updateEmployeesFromDatabase() {
-        String query = "SELECT * FROM Employee";
+        // LEFT OUTER JOIN to get all employees, even those without a department
+        String query = "SELECT Employee.EmpId, EmpName, EmpSalary, Department.DeptName, DeptAddress, DeptBudget"
+        + "FROM Employee "
+        + "LEFT OUTER JOIN Department "
+        + "ON Employee.DeptName = Department.DeptName";
+
         
         try (Connection connection = ConnectionHandler.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -27,9 +33,19 @@ public class EmployeeDAO {
 
             while (resultSet.next()) {
                 String employeeId = resultSet.getString("EmpId");
-                String name = resultSet.getString("EmpName");
-                int salary = resultSet.getInt("EmpSalary");
-                Employee employee = new Employee(employeeId, name, salary);
+                String employeeName = resultSet.getString("EmpName");
+                int employeeSalary = resultSet.getInt("EmpSalary");
+                String departmentName = resultSet.getString("DeptName");
+                String departmentAddress = resultSet.getString("DeptAddress");
+                int departmentBudget = resultSet.getInt("DeptBudget");
+
+                // If the employee has a department, create a department object
+                Department department = new Department(departmentName, departmentAddress, departmentBudget);
+
+                // Create an employee object with the department object
+                Employee employee = new Employee(employeeId, employeeName, employeeSalary, department);
+
+                // Add the employee to the observable list
                 employees.add(employee);
             }
         } catch (SQLException e) {
