@@ -11,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
-
 import se.lu.ics.models.Department;
 import se.lu.ics.data.DepartmentDAO;
 
@@ -34,6 +33,8 @@ public class DepartmentController {
     private Button buttonDepartmentAdd;
     @FXML
     private Button buttonNavigateToEmployee;
+    @FXML
+    private Button buttonNavigateToMain;
 
     public void initialize() {
         tableColumnDepartmentName.setCellValueFactory(new PropertyValueFactory<Department, String>("name"));
@@ -67,13 +68,37 @@ public class DepartmentController {
             employeeStage.show();
 
             // Close the current stage
-            Stage currentStage = (Stage) buttonNavigateToEmployee.getScene().getWindow();
-            currentStage.close();
+            ((Stage) buttonNavigateToEmployee.getScene().getWindow()).close();
         } catch (Exception e) {
             // TODO: Proper error handling
             e.printStackTrace();
         }
 
     }
-    
+
+    @FXML
+    public void buttonNavigateToMain_OnClick() {
+        String path = "/fxml/Main.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        try {
+            // Load the new root layout
+            AnchorPane root = loader.load();
+
+            // Get the current stage or use some method to fetch it.
+            Stage mainStage = new Stage(); 
+            Scene mainScene = new Scene(root);
+
+            // Set the scene to the stage
+            mainStage.setScene(mainScene);
+            mainStage.setTitle("Employees and departments");
+            mainStage.show();
+            
+            // Close the current stage
+            ((Stage) buttonNavigateToMain.getScene().getWindow()).close();
+
+        } catch (Exception e) {
+            // TODO: Proper error handling
+            e.printStackTrace();
+        }
+    }
 }
