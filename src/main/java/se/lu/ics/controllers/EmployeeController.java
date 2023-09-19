@@ -74,6 +74,11 @@ public class EmployeeController {
 
             departmentStage.setTitle("Departments");
             departmentStage.show();
+            
+            // Close the current stage
+            Stage currentStage = (Stage) buttonNavigateToDepartment.getScene().getWindow();
+            currentStage.close();
+            
         } catch (Exception e) {
             // TODO: Proper error handling
             e.printStackTrace();

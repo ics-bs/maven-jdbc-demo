@@ -22,5 +22,6 @@
       <TextField fx:id="textFieldEmployeeName" layoutX="102.0" layoutY="367.0" prefHeight="26.0" prefWidth="247.0" promptText="Name" />
       <TextField fx:id="textFieldEmployeeSalary" layoutX="102.0" layoutY="410.0" promptText="Salary" />
       <Button fx:id="btnEmployeeAdd" layoutX="102.0" layoutY="458.0" mnemonicParsing="false" onMouseClicked="#buttonEmployeeAdd_OnClick" text="Add" />
+      <Button fx:id="buttonNavigateToDepartment" layoutX="30.0" layoutY="535.0" mnemonicParsing="false" onAction="#buttonNavigateToDepartment_OnClick" prefHeight="26.0" prefWidth="111.0" text="Departments" />
    </children>
 </AnchorPane>
