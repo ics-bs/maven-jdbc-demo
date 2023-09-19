@@ -35,5 +35,14 @@ public class DepartmentController {
 
         tableViewDepartment.setItems(DepartmentDAO.getDepartments());
     }
+
+    @FXML
+    public void buttonDepartmentAdd_OnClick() {
+        String departmentName = textFieldDepartmentName.getText();
+        String departmentAddress = textFieldDepartmentAddress.getText();
+        int departmentBudget = Integer.parseInt(textFieldDepartmentBudget.getText());
+
+        DepartmentDAO.addDepartment(departmentName, departmentAddress, departmentBudget);
+    }
     
 }
