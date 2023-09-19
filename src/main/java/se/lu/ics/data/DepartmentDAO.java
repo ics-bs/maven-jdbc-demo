@@ -37,7 +37,7 @@ public class DepartmentDAO {
     }
 
     // add
-    public void addDepartment(String name, String address, int budget){
+    public static void addDepartment(String name, String address, int budget){
         // add department to db
         String query = "INSERT INTO Department (DeptName, DeptAddress, DeptBudget) VALUES (?, ?, ?)";
 
@@ -63,9 +63,6 @@ public class DepartmentDAO {
 
 
     }
-
-
-
 
     public static ObservableList<Department> getDepartments() {
         return departments;
