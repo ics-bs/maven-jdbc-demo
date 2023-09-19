@@ -24,7 +24,7 @@ public class App extends Application {
             primaryStage.setScene(scene);
 
             // Set the stage title and show it
-            primaryStage.setTitle("Employee App");
+            primaryStage.setTitle("Employees");
             primaryStage.show();
         } catch (Exception e) {
             // TODO: Error handling
