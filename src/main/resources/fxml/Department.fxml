@@ -23,5 +23,6 @@
       <TextField fx:id="textFieldEDepartmentBudget" layoutX="102.0" layoutY="410.0" promptText="Budget" />
       <Button fx:id="btnDepartmentAdd" layoutX="102.0" layoutY="458.0" mnemonicParsing="false" onMouseClicked="#buttonDepartmentAdd_OnClick" text="Add" />
       <Button fx:id="buttonNavigateToEmployee" layoutX="30.0" layoutY="535.0" mnemonicParsing="false" onAction="#buttonNavigateToEmployee_OnClick" prefHeight="26.0" prefWidth="111.0" text="Employees"/>
+      <Button fx:id="buttonNavigateToMain" layoutX="156.0" layoutY="535.0" mnemonicParsing="false" onAction="#buttonNavigateToMain_OnClick" prefHeight="26.0" prefWidth="211.0" text="Employees and departments"/>
    </children>
 </AnchorPane>

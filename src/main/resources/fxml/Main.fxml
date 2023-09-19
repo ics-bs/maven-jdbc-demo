@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="se.lu.ics.controllers.MainController">
-
-    <!-- Buttons for Employee, Department, and Employee and Departments -->
-    <Button layoutX="50.0" layoutY="177.0" text="Employees" />
-    <Button layoutX="50.0" layoutY="177.0" text="Departments" />
-    <Button layoutX="50.0" layoutY="177.0" text="Employees and Departments" />
-   <Label layoutX="50.0" layoutY="60.0" text="What excites you the most?">
-      <font>
-         <Font size="24.0" />
-      </font>
-   </Label>
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.lu.ics.controllers.MainController">
+   <children>
+      <TabPane prefHeight="626.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabEmployee" text="Employee">
+            <content>
+              <fx:include source="Employee.fxml" />
+            </content>
+          </Tab>
+          <Tab fx:id="tabDepartment" text="Department">
+            <content>
+              <fx:include source="Department.fxml" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </AnchorPane>

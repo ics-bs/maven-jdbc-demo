@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import se.lu.ics.models.Department;
 import se.lu.ics.models.Employee;
 
@@ -51,7 +52,6 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
     }
-
  
     public static void addEmployee(String employeeId, String employeeName, int employeeSalary) {
         String query = "INSERT INTO Employee (EmpId, EmpName, EmpSalary) VALUES (?, ?, ?)";

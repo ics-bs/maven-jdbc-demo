@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import se.lu.ics.models.Department;
-import se.lu.ics.models.Employee;
 
 public class DepartmentDAO {
     private static ObservableList<Department> departments = FXCollections.observableArrayList();
@@ -32,13 +31,13 @@ public class DepartmentDAO {
                 departments.add(department);
             }
         } catch (SQLException e) {
+            // TODO: Proper error handling
             e.printStackTrace();
         }
     }
 
     // add
     public static void addDepartment(String name, String address, int budget){
-        // add department to db
         String query = "INSERT INTO Department (DeptName, DeptAddress, DeptBudget) VALUES (?, ?, ?)";
 
         try (Connection connection = ConnectionHandler.getConnection()) {
@@ -59,13 +58,9 @@ public class DepartmentDAO {
             // TODO: Error handling
             e.printStackTrace();
         }
-
-
-
     }
 
     public static ObservableList<Department> getDepartments() {
         return departments;
     }
-    
 }
