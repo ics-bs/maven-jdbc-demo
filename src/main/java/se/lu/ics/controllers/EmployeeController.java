@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 
-
 public class EmployeeController {
     @FXML
     private TableView<Employee> tableViewEmployee;
@@ -38,9 +37,9 @@ public class EmployeeController {
     private Button buttonEmployeeAdd;
     @FXML
     private Button buttonNavigateToDepartment;
+    @FXML
+    private Button buttonNavigateToMain;
 
-
-    // observablelist of employees
     public void initialize() {
 
         tableColumnEmployeeId.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeId"));
@@ -99,5 +98,30 @@ public class EmployeeController {
         }
         
     }
-    
+
+    @FXML
+    public void buttonNavigateToMain_OnClick() {
+        String path = "/fxml/Main.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        try {
+            // Load the new root layout
+            AnchorPane root = loader.load();
+
+            // Get the current stage or use some method to fetch it.
+            Stage mainStage = new Stage(); 
+            Scene mainScene = new Scene(root);
+
+            // Set the scene to the stage
+            mainStage.setScene(mainScene);
+            mainStage.setTitle("Employees and departments");
+            mainStage.show();
+            
+            // Close the current stage
+            ((Stage) buttonNavigateToMain.getScene().getWindow()).close();
+
+        } catch (Exception e) {
+            // TODO: Proper error handling
+            e.printStackTrace();
+        }
+    }
 }
