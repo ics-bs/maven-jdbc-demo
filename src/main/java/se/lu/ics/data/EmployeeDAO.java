@@ -20,11 +20,10 @@ public class EmployeeDAO {
 
     public static void updateEmployeesFromDatabase() {
         // LEFT OUTER JOIN to get all employees, even those without a department
-        String query = "SELECT Employee.EmpId, EmpName, EmpSalary, Department.DeptName, DeptAddress, DeptBudget"
+        String query = "SELECT Employee.EmpId, EmpName, EmpSalary, Department.DeptName, DeptAddress, DeptBudget "
         + "FROM Employee "
         + "LEFT OUTER JOIN Department "
         + "ON Employee.DeptName = Department.DeptName";
-
         
         try (Connection connection = ConnectionHandler.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);

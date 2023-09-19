@@ -1,6 +1,7 @@
 package se.lu.ics.controllers;
 import se.lu.ics.models.Employee;
 import se.lu.ics.data.EmployeeDAO;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableView;
@@ -22,6 +23,10 @@ public class EmployeeController {
     private TableColumn<Employee, String> tableColumnEmployeeName;
     @FXML
     private TableColumn<Employee, Integer> tableColumnEmployeeSalary;
+    @FXML
+    private TableColumn<Employee, String> tableColumnEmployeeDepartmentName;
+    @FXML
+    private TableColumn<Employee, String> tableColumnEmployeeDepartmentAddress;
 
     @FXML
     private TextField textFieldEmployeeId;
@@ -38,9 +43,18 @@ public class EmployeeController {
     // observablelist of employees
     public void initialize() {
 
-        tableColumnEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
-        tableColumnEmployeeName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tableColumnEmployeeSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        tableColumnEmployeeId.setCellValueFactory(new PropertyValueFactory<Employee, String>("employeeId"));
+        tableColumnEmployeeName.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
+        tableColumnEmployeeSalary.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("salary"));
+        
+        // For the Employee's department name
+        // Uses lambda expression to get the department name from the employee
+        tableColumnEmployeeDepartmentName.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(cellData.getValue().getDepartment().getName()));
+
+        // For the Employee's department address
+        tableColumnEmployeeDepartmentAddress.setCellValueFactory(cellData -> 
+            new SimpleStringProperty(cellData.getValue().getDepartment().getAddress()));
 
         tableViewEmployee.setItems(EmployeeDAO.getEmployees());
     }
@@ -78,7 +92,7 @@ public class EmployeeController {
             // Close the current stage
             Stage currentStage = (Stage) buttonNavigateToDepartment.getScene().getWindow();
             currentStage.close();
-            
+
         } catch (Exception e) {
             // TODO: Proper error handling
             e.printStackTrace();
